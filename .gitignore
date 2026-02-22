@@ -1,0 +1,4 @@
+node_modules/
+hooks/spellbook/dist/
+npm-debug.log*
+.DS_Store

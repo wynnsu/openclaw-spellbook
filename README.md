@@ -119,16 +119,40 @@ We want weird, niche, and creative themes.
 
 ```text
 .
+├── .github/workflows/ci.yml
 ├── hooks/
 │   └── spellbook/
-│       └── README.md
+│       ├── src/
+│       ├── README.md
+│       └── tsconfig.json
+├── schemas/
+│   └── spell.schema.json
+├── scripts/
+│   └── validate-spells.mjs
 ├── spells/
 │   ├── templates/
 │   │   └── basic.yaml
 │   └── teyvat.yaml
 ├── VISION.md
+├── package.json
 └── README.md
 ```
+
+---
+
+## 🧪 Local Scripts
+
+```bash
+npm install
+npm run lint
+npm run validate:spells
+npm run build
+```
+
+- `lint` runs strict TypeScript checks for the hook scaffold.
+- `validate:spells` validates all YAML/JSON files under `/spells` against `schemas/spell.schema.json`.
+
+CI runs the lint and spell schema checks on every push and pull request.
 
 ---
 

@@ -1,0 +1,18 @@
+{
+  "name": "openclaw-spellbook",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p hooks/spellbook/tsconfig.json",
+    "lint": "tsc -p hooks/spellbook/tsconfig.json --noEmit",
+    "validate:spells": "node scripts/validate-spells.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

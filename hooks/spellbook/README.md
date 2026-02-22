@@ -1,24 +1,25 @@
-# Spellbook Hook (Scaffold)
+# Spellbook Hook (TypeScript Scaffold)
 
-This directory is the future home of the OpenClaw hook implementation.
+This directory now contains a minimal Node/TypeScript scaffold for the Spellbook hook.
 
-## Planned Hook Events
+## Exported Functions
 
-- `onboard` / `init`
-  - Discover themes under `/spells`
-  - Show theme coverage leaderboard
-  - Let user select a lineage
-  - Generate `SPELLS.md` cache
+- `init(options)`
+  - Validates a spell theme object and builds a runtime lookup index.
+- `translateBeforeTurn(input, runtime)`
+  - Performs exact spell phrase replacement first, then local fuzzy matching metadata as a safe fallback.
+- `translateAfterTurn(input, runtime)`
+  - Rewrites canonical skill IDs into themed aliases for user-facing output.
+- `fuzzyMatch(...)`
+  - Small local fuzzy helper used by the before-turn translator.
 
-- `agent:before-turn`
-  - Fuzzy-match themed user phrases
-  - Translate to canonical technical skill IDs
+## Files
 
-- `agent:after-turn`
-  - Map technical action labels to themed aliases
-  - Render aliases in user-facing output
+- `src/index.ts` - hook API scaffold and translation functions
+- `src/fuzzy.ts` - local fuzzy matching helper
+- `tsconfig.json` - build config (`npm run build`)
 
 ## Notes
 
-- Keep transformations local-only (no model token overhead).
-- Keep fallback behavior safe and deterministic.
+- Local-only transformations keep token overhead at zero.
+- Fuzzy matches are returned as metadata unless an exact replacement is safe.
