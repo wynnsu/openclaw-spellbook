@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -p hooks/spellbook/tsconfig.json",
     "lint": "tsc -p hooks/spellbook/tsconfig.json --noEmit",
-    "validate:spells": "node scripts/validate-spells.mjs"
+    "validate:spells": "node scripts/validate-spells.mjs",
+    "fetch:popular-skills": "node scripts/fetch-popular-skills.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",

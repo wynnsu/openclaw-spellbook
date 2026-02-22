@@ -147,10 +147,14 @@ npm install
 npm run lint
 npm run validate:spells
 npm run build
+npm run fetch:popular-skills -- --limit 10 --include-hot
 ```
 
 - `lint` runs strict TypeScript checks for the hook scaffold.
 - `validate:spells` validates all YAML/JSON files under `/spells` against `schemas/spell.schema.json`.
+- `fetch:popular-skills` pulls top skills from:
+  - `skills.sh` (trending installs, optional hot movers)
+  - ClawHub (`https://clawhub.ai/skills?sort=downloads&nonSuspicious=true`)
 
 CI runs the lint and spell schema checks on every push and pull request.
 
