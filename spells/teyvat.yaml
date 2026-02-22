@@ -1,0 +1,19 @@
+theme: "Genshin Impact"
+author: "@example"
+description: "Turn your terminal into a Vision-holder command altar."
+mappings:
+  search-web:
+    spell: "Elemental Sight"
+    icon: "👁️"
+  fix-bugs:
+    spell: "Cleanse"
+    icon: "💧"
+  deploy:
+    spell: "Ascension"
+    icon: "✨"
+  write-file:
+    spell: "Inscribe"
+    icon: "📜"
+  kill-process:
+    spell: "Dispel"
+    icon: "🌪️"

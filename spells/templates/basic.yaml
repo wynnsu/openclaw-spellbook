@@ -1,0 +1,19 @@
+theme: "Your Theme"
+author: "@YourGitHubHandle"
+description: "One-line description of your world."
+mappings:
+  search-web:
+    spell: "Divination"
+    icon: "🔮"
+  write-file:
+    spell: "Rune Inscription"
+    icon: "✍️"
+  deploy:
+    spell: "Summon"
+    icon: "🚀"
+  fix-bugs:
+    spell: "Cleanse"
+    icon: "🧹"
+  kill-process:
+    spell: "Banish"
+    icon: "⚔️"
