@@ -1,11 +1,11 @@
 ---
-name: spell-mapping-generator
-description: Generate OpenClaw Spellbook YAML theme mappings from a topic (game/movie/franchise/etc.) or a URL. Use when Codex needs to create or refresh a themed spell mapping file under /spells with broad coverage of popular skills (default top 50), using fetched lore/context when available and heuristic fallbacks when fetches fail.
+name: magic-quill
+description: Generate OpenClaw Spellbook YAML theme mappings from a topic (game/movie/franchise/etc.) or a URL. Use when you need to create or refresh a themed spell mapping file under /spells with broad coverage of popular skills (default top 50), using fetched lore/context when available and heuristic fallbacks when fetches fail.
 ---
 
-# Spell Mapping Generator
+# Magic Quill
 
-Generate a themed spell mapping YAML for OpenClaw Spellbook with high coverage for popular skills.
+A magical quill that inscribes themed spell mappings for OpenClaw Spellbook with high coverage for popular skills.
 
 ## Inputs
 
@@ -13,7 +13,7 @@ Generate a themed spell mapping YAML for OpenClaw Spellbook with high coverage f
 - Optional `--theme <name>` to override the final theme name (or run heuristic-only mode with just `--theme`)
 - Optional `--out <path>` (alias: `--output`) (default: `spells/<theme-slug>.yaml`)
 - Optional `--limit <n>` (alias: `--top`) for top-N coverage (default: `50`)
-- Optional `--author <name>` (default: `@spellbook-generator`)
+- Optional `--author <name>` (default: `@magic-quill`)
 
 ## What To Do
 
@@ -40,7 +40,7 @@ npm run generate:spellbook-theme -- --url "https://en.wikipedia.org/wiki/The_Lor
 ## Commands (Agents)
 
 ```bash
-node spell-mapping-generator/scripts/generate-spell-mapping.mjs --theme "The Legend of Zelda" --topic "The Legend of Zelda" --limit 50 --out spells/zelda.yaml --author "@example"
+node magic-quill/scripts/generate-spell-mapping.mjs --theme "The Legend of Zelda" --topic "The Legend of Zelda" --limit 50 --out spells/zelda.yaml --author "@example"
 node scripts/validate-spells.mjs
 ```
 
@@ -49,11 +49,11 @@ node scripts/validate-spells.mjs
 Use a repo subpath source with `npx skills add`, for example:
 
 ```bash
-npx skills add wynnsu/openclaw-spellbook/spell-mapping-generator
+npx skills add wynnsu/openclaw-spellbook/magic-quill
 ```
 
 Usage after install (example prompt):
 
 ```text
-Use the spell-mapping-generator skill to create a Star Wars spell mapping with top 50 coverage and write it to spells/star-wars.yaml.
+Use magic-quill to create a Star Wars spell mapping with top 50 coverage and write it to spells/star-wars.yaml.
 ```

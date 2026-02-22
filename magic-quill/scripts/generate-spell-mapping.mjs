@@ -401,8 +401,8 @@ function printHelp() {
 
 Usage:
   node spell-mapping-generator/scripts/generate-spell-mapping.mjs --theme "Wizarding World" [options]
-  node spell-mapping-generator/scripts/generate-spell-mapping.mjs --topic "Harry Potter" [options]
-  node spell-mapping-generator/scripts/generate-spell-mapping.mjs --url "https://example.com/wiki/theme" [options]
+  node magic-quill/scripts/generate-spell-mapping.mjs --topic "Harry Potter" [options]
+  node magic-quill/scripts/generate-spell-mapping.mjs --url "https://example.com/wiki/theme" [options]
 
 Options:
   --theme <name>      Explicit theme name (also works without topic/url in heuristic mode)

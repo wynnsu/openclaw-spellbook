@@ -162,12 +162,12 @@ CI runs the lint and spell schema checks on every push and pull request.
 
 ---
 
-## 🧰 Installable Skill: `spell-mapping-generator`
+## 🧰 Installable Skill: `magic-quill`
 
 This repo includes an installable skill subfolder that can be added directly:
 
 ```bash
-npx skills add wynnsu/openclaw-spellbook/spell-mapping-generator
+npx skills add wynnsu/openclaw-spellbook/magic-quill
 ```
 
 Usage examples:
@@ -176,6 +176,12 @@ Usage examples:
 npm run generate:spellbook-theme -- --theme "Studio Ghibli" --limit 10 --author "@you"
 npm run generate:spellbook-theme -- --topic "Harry Potter" --limit 50 --out spells/harry-potter.yaml --author "@you"
 npm run generate:spellbook-theme -- --url "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings" --limit 50
+```
+
+The generator script is also available at:
+```bash
+node magic-quill/scripts/generate-spell-mapping.mjs --theme "Star Wars" --limit 50
+```
 ```
 
 ---
