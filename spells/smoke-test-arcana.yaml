@@ -1,0 +1,34 @@
+theme: "Smoke Test Arcana"
+author: "@codex"
+description: "Smoke Test Arcana spell mappings for 10/10 popular skills, generated from fallback list with heuristic lore."
+mappings:
+  copy-file:
+    spell: "Invoke The Grimoire of Copy"
+    icon: "✨"
+  create-file:
+    spell: "Conjure The Grimoire"
+    icon: "✨"
+  delete-file:
+    spell: "Banish The Grimoire"
+    icon: "🗡️"
+  edit-file:
+    spell: "Etch The Grimoire"
+    icon: "✍️"
+  fix-bugs:
+    spell: "Cleanse The Runes"
+    icon: "💧"
+  list-files:
+    spell: "Invoke The Grimoire"
+    icon: "✨"
+  move-file:
+    spell: "Invoke The Grimoire of Move"
+    icon: "✨"
+  read-file:
+    spell: "Study The Grimoire"
+    icon: "📖"
+  search-web:
+    spell: "Divine The Weave"
+    icon: "🔮"
+  write-file:
+    spell: "Inscribe The Grimoire"
+    icon: "📜"

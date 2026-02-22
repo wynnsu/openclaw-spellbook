@@ -148,6 +148,7 @@ npm run lint
 npm run validate:spells
 npm run build
 npm run fetch:popular-skills -- --limit 10 --include-hot
+npm run generate:spellbook-theme -- --theme "Star Wars" --limit 10 --author "@you"
 ```
 
 - `lint` runs strict TypeScript checks for the hook scaffold.
@@ -155,8 +156,27 @@ npm run fetch:popular-skills -- --limit 10 --include-hot
 - `fetch:popular-skills` pulls top skills from:
   - `skills.sh` (trending installs, optional hot movers)
   - ClawHub (`https://clawhub.ai/skills?sort=downloads&nonSuspicious=true`)
+- `generate:spellbook-theme` creates a themed YAML mapping under `spells/` by merging popular skills from `skills.sh` + ClawHub and layering lore from a URL/Wikipedia (with heuristic fallback).
 
 CI runs the lint and spell schema checks on every push and pull request.
+
+---
+
+## 🧰 Installable Skill: `spell-mapping-generator`
+
+This repo includes an installable skill subfolder that can be added directly:
+
+```bash
+npx skills add wynnsu/openclaw-spellbook/spell-mapping-generator
+```
+
+Usage examples:
+
+```bash
+npm run generate:spellbook-theme -- --theme "Studio Ghibli" --limit 10 --author "@you"
+npm run generate:spellbook-theme -- --topic "Harry Potter" --limit 50 --out spells/harry-potter.yaml --author "@you"
+npm run generate:spellbook-theme -- --url "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings" --limit 50
+```
 
 ---
 
