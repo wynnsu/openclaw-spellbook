@@ -1,6 +1,6 @@
 ---
 name: magic-quill
-description: Generate OpenClaw Spellbook YAML theme mappings from a topic (game/movie/franchise/etc.) or a URL. Use when you need to create or refresh a themed spell mapping file under /spells with broad coverage of popular skills (default top 50), using fetched lore/context when available and heuristic fallbacks when fetches fail.
+description: Generate OpenClaw Spellbook YAML theme mappings from a topic (game/movie/franchise/etc.) or a URL. Use when you need to create or refresh a themed spell mapping file under /spells with broad coverage of popular skills (default top 50). The generator now performs dynamic spell-list reference discovery first (searching for spell lists/APIs and parsing discovered JSON/HTML sources), then uses lore/context as secondary style input and falls back to heuristic spell names when references fail.
 ---
 
 # Magic Quill
@@ -9,7 +9,7 @@ A magical quill that inscribes themed spell mappings for OpenClaw Spellbook with
 
 ## Inputs
 
-- `--topic <name>` or `--url <https://...>` (primary inputs; use one for lore fetching)
+- `--topic <name>` or `--url <https://...>` (primary inputs; spell-list lookup searches by topic/theme first, and `--url` is treated as a high-priority reference candidate when provided)
 - Optional `--theme <name>` to override the final theme name (or run heuristic-only mode with just `--theme`)
 - Optional `--out <path>` (alias: `--output`) (default: `spells/<theme-slug>.yaml`)
 - Optional `--limit <n>` (alias: `--top`) for top-N coverage (default: `50`)
@@ -21,13 +21,18 @@ A magical quill that inscribes themed spell mappings for OpenClaw Spellbook with
    - `skills.sh` trending installs
    - ClawHub downloads API endpoint
 2. Merge and de-duplicate the results into a target set (fill gaps from built-in fallback skills if fetch fails).
-3. Gather lore/context:
-   - If `--url` is provided, fetch and extract page text first.
-   - Else if `--topic` is provided, try Wikipedia summary API.
-   - If fetch fails, use built-in theme lexicon/heuristics.
-4. Generate spell mappings with broad coverage for the selected top skills.
-5. Write YAML to the requested output path (usually under `spells/`).
-6. Validate with `npm run validate:spells` if the output file is under `spells/`.
+3. Gather spell-list references first (primary spell source):
+   - Build dynamic web search queries from topic/theme (for example `<topic> spell list` and `<topic> spells api`)
+   - Parse top search result links (DuckDuckGo HTML results) into candidate reference URLs
+   - Include `--url` as a high-priority candidate when present
+   - Fetch discovered JSON/HTML references (for example `dnd5eapi.co` if discovered), extract spell names, and merge/de-duplicate names from successful references
+4. Gather lore/context (secondary style keywords only):
+   - If `--url` is provided, fetch and extract page text
+   - Else if `--topic` is provided, try Wikipedia summary API
+   - If fetch fails, use built-in theme lexicon/heuristics
+5. If spell-list references fail or do not produce enough names, generate spell mappings with the built-in heuristic spell-name generator.
+6. Write YAML to the requested output path (usually under `spells/`), including `# spell-list-references:` comment links for successful dynamically discovered spell-list sources/endpoints when available.
+7. Validate with `npm run validate:spells` if the output file is under `spells/`.
 
 ## Commands (Users)
 
@@ -35,6 +40,7 @@ A magical quill that inscribes themed spell mappings for OpenClaw Spellbook with
 npm run generate:spellbook-theme -- --theme "Studio Ghibli" --limit 50 --author "@you"
 npm run generate:spellbook-theme -- --topic "Cyberpunk 2077" --limit 75 --out spells/cyberpunk-2077.yaml --author "@you"
 npm run generate:spellbook-theme -- --url "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings" --limit 50 --author "@you"
+npm run generate:spellbook-theme -- --topic "DnD 5e" --limit 20 --author "@you"
 ```
 
 ## Commands (Agents)

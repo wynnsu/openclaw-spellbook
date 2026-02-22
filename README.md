@@ -156,7 +156,8 @@ npm run generate:spellbook-theme -- --theme "Star Wars" --limit 10 --author "@yo
 - `fetch:popular-skills` pulls top skills from:
   - `skills.sh` (trending installs, optional hot movers)
   - ClawHub (`https://clawhub.ai/skills?sort=downloads&nonSuspicious=true`)
-- `generate:spellbook-theme` creates a themed YAML mapping under `spells/` by merging popular skills from `skills.sh` + ClawHub and layering lore from a URL/Wikipedia (with heuristic fallback).
+- `generate:spellbook-theme` creates a themed YAML mapping under `spells/` by merging popular skills from `skills.sh` + ClawHub, dynamically searching for spell-list references first (JSON/HTML, with follow-up to discovered spell endpoints when needed), and then layering lore from a URL/Wikipedia for style (with heuristic fallback). Generated YAML includes discovered spell-list reference links in header comments when available.
+- Example compatibility: for DnD-like themes (for example `DnD 5e`), dynamic reference search may discover sources such as `dnd5eapi.co`; these are examples, not hardcoded fixed endpoints.
 
 CI runs the lint and spell schema checks on every push and pull request.
 
@@ -175,6 +176,7 @@ Usage examples:
 ```bash
 npm run generate:spellbook-theme -- --theme "Studio Ghibli" --limit 10 --author "@you"
 npm run generate:spellbook-theme -- --topic "Harry Potter" --limit 50 --out spells/harry-potter.yaml --author "@you"
+npm run generate:spellbook-theme -- --topic "DnD 5e" --limit 20 --author "@you"
 npm run generate:spellbook-theme -- --url "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings" --limit 50
 ```
 
